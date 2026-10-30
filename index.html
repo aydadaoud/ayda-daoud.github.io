@@ -3,1831 +3,845 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0a0a0c">
-<title>Engineering Portfolio | Built to Move</title>
-<meta name="description" content="Mechanical engineering portfolio featuring vehicle design, prototyping, manufacturing and hands-on engineering projects.">
+<meta name="description" content="Ayda Daoud — Mechanical Engineering, creative problem-solving, design and hands-on making.">
+<title>Ayda Daoud | Built to Move</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== DESIGN SYSTEM: three colours only ===== */
 :root {
-  --carbon: #0a0a0c;
-  --asphalt: #121216;
-  --panel: #17171d;
-  --panel-2: #1f1f27;
-  --line: #2a2a33;
-  --white: #f4f1ea;
-  --mute: #9d9daa;
-  --red: #e10600;
-  --display: "Anton", Impact, sans-serif;
-  --body: "Archivo", Arial, sans-serif;
-  --checker: conic-gradient(var(--white) 25%, var(--carbon) 0 50%, var(--white) 0 75%, var(--carbon) 0) 0 0 / 28px 28px;
+  --bg: #101114;
+  --panel: #191b20;
+  --ink: #f4f2ed;
+  --muted: #a7a9ad;
+  --red: #f04b45;
+  --blue: #79a9d8;
+  --line: rgba(255,255,255,.14);
+  --max: 1160px;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; background: var(--carbon); }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 body {
   margin: 0;
-  background: var(--carbon);
-  color: var(--white);
-  font-family: var(--body);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-body.modal-open { overflow: hidden; }
-a { color: inherit; text-decoration: none; }
-button { font: inherit; }
-:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
-::selection { background: var(--red); color: var(--white); }
-
-.wrap { width: min(1180px, 90%); margin: auto; }
-.section { padding: 110px 0; position: relative; }
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--red);
-  font-weight: 700;
-  font-size: .74rem;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-}
-.kicker::before { content: ""; width: 34px; height: 3px; background: var(--red); }
-.title {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(3rem, 7vw, 6.2rem);
-  line-height: .92;
-  text-transform: uppercase;
-  margin: 16px 0 22px;
-}
-.title span { color: var(--red); }
-.intro-text { max-width: 620px; color: var(--mute); line-height: 1.8; }
-
-/* Race progress line */
-.progress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 3px;
-  width: 100%;
-  background: var(--red);
-  transform-origin: 0 50%;
-  transform: scaleX(0);
-  z-index: 200;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
 }
 
-/* ===== HEADER ===== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: min(var(--max), calc(100% - 44px));
+  margin: auto;
+}
+
+/* NAVIGATION */
+
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(10,10,12,.92);
-  backdrop-filter: blur(12px);
+  z-index: 30;
+  background: rgba(16,17,20,.9);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
+
 .nav {
   min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-}
-.logo { font-family: var(--display); font-size: 1.9rem; letter-spacing: .02em; }
-.logo span { color: var(--red); }
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a {
-  font-size: .74rem;
-  font-weight: 600;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: #c9c9d2;
-  transition: color .2s;
-}
-.nav-links a:hover { color: var(--red); }
-.nav-contact {
-  background: var(--red);
-  color: var(--white) !important;
-  padding: 11px 16px;
-}
-.nav-contact:hover { background: var(--white); color: var(--carbon) !important; }
-.timer {
-  font-variant-numeric: tabular-nums;
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .14em;
-  color: var(--mute);
-  border-left: 1px solid var(--line);
-  padding-left: 22px;
-  white-space: nowrap;
-}
-.timer b { color: var(--white); font-weight: 700; }
-.menu-toggle {
-  display: none;
-  background: none;
-  color: var(--white);
-  border: 1px solid var(--line);
-  padding: 8px 12px;
-  cursor: pointer;
-  font-family: var(--body);
-  font-weight: 600;
-  letter-spacing: .1em;
+  gap: 20px;
 }
 
-/* ===== HERO / POSTER ===== */
+.brand {
+  font: 800 25px "Barlow Condensed";
+  letter-spacing: .08em;
+}
+
+.brand span { color: var(--red); }
+
+.navlinks {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.navlinks a:hover { color: var(--ink); }
+
+.navlinks .nav-cta {
+  color: var(--ink);
+  border: 1px solid var(--red);
+  padding: 8px 13px;
+}
+
+/* HERO */
+
 .hero {
-  position: relative;
-  min-height: 680px;
+  min-height: 690px;
   display: flex;
   align-items: center;
-  padding: 90px 0 120px;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 80% 40%, rgba(225,6,0,.16), transparent 45%),
-    linear-gradient(180deg, var(--carbon), var(--asphalt));
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(115deg, transparent 0 140px, rgba(255,255,255,.018) 140px 142px);
-  pointer-events: none;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 14px;
-  background: var(--checker);
-}
-.hero-inner {
   position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1.3fr .7fr;
-  gap: 50px;
-  align-items: center;
+  overflow: hidden;
+  padding: 90px 0;
 }
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 14px;
-  background: var(--white);
-  color: var(--carbon);
-  font-weight: 800;
-  font-size: .72rem;
-  letter-spacing: .16em;
+
+.hero:before {
+  content: "";
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  border: 1px solid rgba(121,169,216,.24);
+  border-radius: 50%;
+  right: -120px;
+  top: 25px;
+  box-shadow:
+    0 0 0 48px rgba(121,169,216,.035),
+    0 0 0 96px rgba(121,169,216,.025);
+}
+
+.hero:after {
+  content: "";
+  position: absolute;
+  right: 13%;
+  top: 12%;
+  height: 500px;
+  width: 2px;
+  background: linear-gradient(transparent,var(--red),transparent);
+  transform: rotate(38deg);
+  opacity: .65;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.eyebrow, .kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .22em;
   text-transform: uppercase;
+  color: var(--blue);
 }
-.hero-tag .dot { width: 8px; height: 8px; background: var(--red); }
-.hero h1 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(5rem, 13vw, 12.5rem);
-  line-height: .84;
+
+h1, h2, h3 {
+  font-family: "Barlow Condensed", sans-serif;
   text-transform: uppercase;
-  margin: 30px 0 26px;
+  line-height: .94;
+  margin: 0;
 }
-.hero h1 .outline { color: transparent; -webkit-text-stroke: 2px var(--white); }
-.hero h1 .red { color: var(--red); }
-.hero-sub { max-width: 520px; color: #c2c2cc; line-height: 1.8; font-size: 1.02rem; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+
+h1 {
+  font-size: clamp(78px,14vw,164px);
+  letter-spacing: -.035em;
+  margin: 22px 0;
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.hero-sub {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 16px 26px;
-  background: var(--red);
-  color: var(--white);
-  border: 2px solid var(--red);
-  font-weight: 800;
-  font-size: .78rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
-}
-.btn:hover { background: var(--white); border-color: var(--white); color: var(--carbon); }
-.btn.ghost { background: transparent; border-color: var(--white); }
-.btn.ghost:hover { background: var(--white); color: var(--carbon); }
-
-/* Start gantry: the racing lights */
-.hero-art { display: flex; flex-direction: column; align-items: center; }
-.gantry {
-  position: relative;
-  width: min(340px, 80vw);
-  padding: 30px 30px 28px;
-  background: var(--carbon);
+  justify-content: center;
+  padding: 12px 18px;
   border: 1px solid var(--line);
-  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: .2s;
 }
-.gantry::before {
+
+.btn.primary {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.hero-note {
+  position: absolute;
+  right: 5%;
+  bottom: 13%;
+  z-index: 2;
+  color: var(--blue);
+  font: 700 27px/1.05 "Caveat";
+  transform: rotate(-8deg);
+}
+
+.scroll-cue {
+  margin-top: 65px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* MOVING TICKER */
+
+.ticker {
+  overflow: hidden;
+  background: #15171b;
+  border-block: 1px solid var(--line);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  padding: 13px 0;
+  animation: marquee 28s linear infinite;
+  font: 700 17px "Barlow Condensed";
+  letter-spacing: .15em;
+  color: var(--muted);
+}
+
+.ticker-track span { color: var(--red); }
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* GENERAL SECTIONS */
+
+section { padding: 105px 0; }
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 44px;
+}
+
+.section-head .kicker {
+  color: var(--red);
+  margin-bottom: 13px;
+}
+
+h2 {
+  font-size: clamp(52px,8vw,88px);
+  letter-spacing: -.02em;
+}
+
+.intro {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.portrait {
+  min-height: 470px;
+  background: linear-gradient(145deg,#2b3039,#17191e);
+  border: 1px solid var(--line);
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.portrait:before {
+  content: "ADD YOUR PHOTO";
+  font: 700 18px "Barlow Condensed";
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.38);
+}
+
+.portrait:after {
   content: "";
   position: absolute;
-  left: 0; right: 0; top: 0;
-  height: 6px;
-  background: var(--red);
-}
-.gantry-lights { display: flex; justify-content: space-between; gap: 12px; }
-.gl {
-  width: 46px; height: 46px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 42%, #2a0302, #120101 70%);
-  box-shadow: inset 0 0 6px #000;
-  animation: glCycle 6s infinite;
-}
-.gl:nth-child(2) { animation-delay: .3s; }
-.gl:nth-child(3) { animation-delay: .6s; }
-.gl:nth-child(4) { animation-delay: .9s; }
-.gl:nth-child(5) { animation-delay: 1.2s; }
-@keyframes glCycle {
-  0% { background: radial-gradient(circle at 50% 42%, #2a0302, #120101 70%); box-shadow: inset 0 0 6px #000; }
-  6%, 62% {
-    background: radial-gradient(circle at 50% 42%, #fff 0 6%, #ff4a3d 20%, #e10600 52%, #5c0200 100%);
-    box-shadow: 0 0 20px rgba(225,6,0,.9), 0 0 50px rgba(225,6,0,.5);
-  }
-  72%, 100% { background: radial-gradient(circle at 50% 42%, #2a0302, #120101 70%); box-shadow: inset 0 0 6px #000; }
-}
-.gantry-label {
-  margin-top: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: .66rem;
-  font-weight: 800;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--mute);
-}
-.hero-note {
-  margin-top: 16px;
-  color: var(--red);
-  font-weight: 700;
-  font-size: .72rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  inset: 18px;
+  border: 1px solid rgba(121,169,216,.4);
 }
 
-/* ===== TICKER ===== */
-.ticker { background: var(--red); color: var(--white); overflow: hidden; padding: 14px 0; }
-.ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
-.ticker-track span {
-  font-family: var(--display);
-  font-size: 1.5rem;
-  letter-spacing: .06em;
-  padding-right: 34px;
-  white-space: nowrap;
-  text-transform: uppercase;
+.photo-note {
+  position: absolute;
+  bottom: 24px;
+  left: 26px;
+  color: var(--blue);
+  font: 700 26px "Caveat";
+  transform: rotate(-5deg);
 }
-@keyframes ticker { to { transform: translateX(-50%); } }
 
-/* ===== PROJECTS ===== */
-.filters {
+.about-copy p {
+  color: #c4c5c8;
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+
+.about-copy .lead {
+  font-size: 20px;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.hand-note {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--blue);
+  font: 700 29px "Caveat";
+  transform: rotate(-3deg);
+}
+
+.tags {
   display: flex;
   flex-wrap: wrap;
-  margin: 34px 0;
-  border: 1px solid var(--line);
-  width: max-content;
-  max-width: 100%;
+  gap: 8px;
+  margin-top: 20px;
 }
-.filter {
-  background: transparent;
-  border: 0;
-  border-right: 1px solid var(--line);
-  color: var(--mute);
-  padding: 14px 22px;
-  cursor: pointer;
-  font-size: .74rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  transition: background .2s, color .2s;
-}
-.filter:last-child { border-right: 0; }
-.filter:hover { color: var(--white); }
-.filter.active { background: var(--white); color: var(--carbon); }
 
-.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
-.project-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  text-align: left;
-  min-width: 0;
-  padding: 0;
-  overflow: hidden;
-  background: var(--panel);
-  color: var(--white);
+.tag {
   border: 1px solid var(--line);
-  cursor: pointer;
-  transition: transform .3s, border-color .3s;
+  padding: 6px 10px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
-.project-card::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: var(--red);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform .35s;
-  z-index: 2;
-}
-.project-card:hover::before { transform: scaleY(1); }
-.project-card:hover { transform: translateY(-4px); border-color: #3a3a46; }
-.project-card[hidden] { display: none; }
-.project-image {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+
+/* PROJECTS */
+
+.projects, .beyond { background: #14161a; }
+
+.project-grid {
   display: grid;
-  place-items: center;
-  background: repeating-linear-gradient(45deg, #15151b 0 6px, #0f0f13 6px 12px);
-}
-.project-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
-.project-card:hover .project-image img { transform: scale(1.06); }
-.project-image .image-emoji { font-size: 3.6rem; }
-.build-id {
-  position: absolute;
-  top: 14px; left: 14px;
-  background: var(--white);
-  color: var(--carbon);
-  font-family: var(--display);
-  font-size: .9rem;
-  letter-spacing: .06em;
-  padding: 4px 10px;
-  z-index: 1;
-}
-.project-copy { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-.project-status {
-  color: var(--red);
-  font-size: .66rem;
-  font-weight: 800;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.project-copy h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1;
-  text-transform: uppercase;
-  margin: 12px 0 10px;
-}
-.project-copy p { color: var(--mute); font-size: .9rem; line-height: 1.7; margin: 0; }
-.project-open {
-  margin-top: 22px;
-  align-self: flex-start;
-  color: var(--white);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--red);
-  padding-bottom: 4px;
+  grid-template-columns: repeat(2,1fr);
+  gap: 17px;
 }
 
-/* ===== ABOUT ===== */
-.about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 60px; align-items: start; }
-.about-panel {
-  position: relative;
-  padding: 36px;
+.project {
   background: var(--panel);
   border: 1px solid var(--line);
-}
-.about-panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red); }
-.about-panel p { color: #c4c4cd; line-height: 1.9; }
-.brief {
-  display: inline-block;
-  margin-top: 18px;
-  color: var(--mute);
-  font-weight: 600;
-  font-size: .8rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.toolbox-label {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 1.4rem;
-  letter-spacing: .06em;
-  margin: 28px 0 0;
-}
-.skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.skill {
-  border: 1px solid var(--line);
-  background: var(--carbon);
-  padding: 9px 14px;
-  color: #d6d6de;
-  font-size: .74rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  transition: border-color .2s, color .2s;
-}
-.skill:hover { border-color: var(--red); color: var(--white); }
-.note { font-size: .78rem; color: #7d7d89; margin-top: 22px; line-height: 1.7; }
-
-/* ===== EXPERIENCE ===== */
-.timeline { margin-top: 44px; border-left: 2px solid var(--line); }
-.timeline-item { position: relative; padding: 0 0 40px 34px; }
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -8px; top: 4px;
-  width: 14px; height: 14px;
-  background: var(--carbon);
-  border: 2px solid var(--red);
-}
-.timeline-item .role {
-  display: inline-block;
-  background: var(--red);
-  color: var(--white);
-  font-weight: 800;
-  font-size: .66rem;
-  letter-spacing: .16em;
-  padding: 5px 10px;
-  text-transform: uppercase;
-}
-.timeline-item h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 2rem;
-  text-transform: uppercase;
-  margin: 12px 0 8px;
-}
-.timeline-item p { color: var(--mute); line-height: 1.8; margin: 0; max-width: 720px; }
-
-/* ===== LIFE ===== */
-.life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
-.life-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--white);
-  padding: 26px;
-  transition: border-top-color .3s, transform .3s;
-}
-.life-card:hover { border-top-color: var(--red); transform: translateY(-3px); }
-.life-icon { font-size: 2rem; }
-.life-card h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  margin: 16px 0 8px;
-}
-.life-card p { color: var(--mute); font-size: .9rem; line-height: 1.7; margin: 0; }
-
-/* ===== CONTACT ===== */
-.contact {
-  position: relative;
+  transition: .22s;
   overflow: hidden;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  padding: clamp(34px, 6vw, 76px);
 }
-.contact::before {
-  content: "";
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  width: 140px;
-  background: var(--checker);
-  opacity: .06;
-  pointer-events: none;
-}
-.contact h2 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(3.4rem, 8vw, 7rem);
-  line-height: .9;
-  text-transform: uppercase;
-  margin: 16px 0 20px;
-}
-.contact h2 span { color: var(--red); }
-.contact p { max-width: 560px; color: var(--mute); line-height: 1.8; }
-.contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; position: relative; z-index: 1; }
 
-/* ===== FOOTER ===== */
-footer {
-  position: relative;
-  padding: 30px 0;
-  border-top: 1px solid var(--line);
-  color: var(--mute);
-  font-size: .72rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+.project:hover {
+  transform: translateY(-5px);
+  border-color: rgba(240,75,69,.7);
 }
-footer::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; top: -14px;
-  height: 14px;
-  background: var(--checker);
-}
-.footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
 
-/* ===== CASE STUDY WINDOW ===== */
-.modal-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  overflow-y: auto;
+.project-visual {
+  height: 205px;
+  background: linear-gradient(135deg,#292e37,#17191e);
   padding: 20px;
-  background: rgba(5,5,7,.88);
-  backdrop-filter: blur(8px);
-}
-.modal-backdrop.open { display: flex; justify-content: center; align-items: flex-start; }
-.modal {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
   position: relative;
-  width: min(940px, 100%);
-  margin: 20px auto;
-  padding: clamp(24px, 5vw, 50px);
-  background: var(--asphalt);
-  border: 1px solid var(--line);
-}
-.modal::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--red); }
-.modal-close {
-  position: absolute;
-  right: 16px; top: 16px;
-  width: 44px; height: 44px;
-  background: var(--panel-2);
-  color: var(--white);
-  border: 1px solid var(--line);
-  cursor: pointer;
-  font-size: 1rem;
-}
-.modal-close:hover { background: var(--red); border-color: var(--red); }
-.modal-number { color: var(--red); font-weight: 800; font-size: .72rem; letter-spacing: .2em; }
-.modal-status {
-  color: var(--mute);
-  font-weight: 700;
-  font-size: .7rem;
-  letter-spacing: .18em;
-  margin-top: 14px;
-  text-transform: uppercase;
-}
-.modal h2 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 7vw, 5.2rem);
-  line-height: .92;
-  text-transform: uppercase;
-  margin: 12px 50px 18px 0;
-}
-.modal-lead { max-width: 760px; color: #c4c4cd; line-height: 1.8; }
-.modal-main-image {
-  width: 100%;
-  max-height: 470px;
-  object-fit: contain;
-  background: var(--carbon);
-  margin: 26px 0;
-  border: 1px solid var(--line);
-}
-.modal-placeholder {
-  min-height: 180px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 25px;
-  margin: 26px 0;
-  border: 1px dashed #3a3a46;
-  background: repeating-linear-gradient(45deg, #15151b 0 6px, #0f0f13 6px 12px);
-  color: var(--mute);
-}
-.modal-placeholder .placeholder-icon { font-size: 2.4rem; }
-.modal-placeholder strong { color: var(--white); margin: 10px 0; font-family: var(--display); font-weight: 400; letter-spacing: .06em; }
-.modal-details { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
-.detail-box { background: var(--panel); padding: 24px; border-left: 3px solid var(--red); }
-.detail-box h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: 1.3rem;
-  letter-spacing: .04em;
-  margin: 0 0 10px;
-  text-transform: uppercase;
-}
-.detail-box p { color: #b9b9c4; font-size: .92rem; line-height: 1.8; margin: 0; }
-.modal-gallery { margin-top: 34px; }
-.modal-gallery h3 { font-family: var(--display); font-weight: 400; font-size: 1.5rem; letter-spacing: .04em; margin: 0 0 14px; }
-.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
-.gallery-item { background: var(--panel); margin: 0; min-width: 0; }
-.gallery-item img { width: 100%; height: 150px; object-fit: cover; display: block; }
-.gallery-item figcaption { padding: 10px; color: var(--mute); font-size: .74rem; }
-.gallery-item.empty {
-  min-height: 120px;
-  border: 1px dashed #3a3a46;
-  display: grid;
-  place-items: center;
-  color: #7d7d89;
-  font-size: .7rem;
-  letter-spacing: .16em;
-}
-.gallery-item > .empty { padding: 30px; text-align: center; color: #7d7d89; font-size: .7rem; letter-spacing: .16em; }
-.modal-footnote {
-  color: var(--red);
-  font-family: var(--display);
-  font-size: 1.3rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  margin: 30px 0 0;
-}
-
-/* ===== SCROLL REVEAL ===== */
-.reveal { opacity: 0; transform: translateX(-30px); transition: opacity .8s ease, transform .8s ease; }
-.reveal.in { opacity: 1; transform: none; }
-
-/* ===== START-LIGHTS INTRO ===== */
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 3000;
-  background: var(--carbon);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  cursor: pointer;
   overflow: hidden;
-  transition: opacity .6s ease, visibility .6s ease;
-}
-.intro.done { opacity: 0; visibility: hidden; }
-.intro::after {
-  content: "click to skip";
-  position: absolute;
-  bottom: 28px; left: 0; right: 0;
-  text-align: center;
-  color: #55555f;
-  font-size: .66rem;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-}
-.intro .gantry { width: auto; padding: 22px 26px; transition: opacity .25s; }
-.intro .gantry-lights { gap: 16px; }
-.intro .gl { width: 44px; height: 44px; animation: introOn .3s ease forwards; }
-.intro .gl:nth-child(1) { animation-delay: .2s; }
-.intro .gl:nth-child(2) { animation-delay: .55s; }
-.intro .gl:nth-child(3) { animation-delay: .9s; }
-.intro .gl:nth-child(4) { animation-delay: 1.25s; }
-.intro .gl:nth-child(5) { animation-delay: 1.6s; }
-@keyframes introOn {
-  to {
-    background: radial-gradient(circle at 50% 42%, #fff 0 6%, #ff4a3d 20%, #e10600 52%, #5c0200 100%);
-    box-shadow: 0 0 20px rgba(225,6,0,.9), 0 0 50px rgba(225,6,0,.5);
-  }
-}
-.intro.go .gl { animation: none; background: radial-gradient(circle at 50% 42%, #2a0302, #120101 70%); box-shadow: inset 0 0 6px #000; }
-.intro.hit .gantry { opacity: 0; }
-/* ===== IMPACT: white flash, then hero slams in ===== */
-.intro.hit { animation: flash .6s ease forwards; }
-@keyframes flash {
-  0%   { background-color: var(--white); }
-  100% { background-color: var(--carbon); }
-}
-body:not(.ready) .hero h1 { opacity: 0; }
-body.ready .hero h1 { animation: slam .9s cubic-bezier(.2,1.5,.4,1) both; }
-body.ready .hero-tag,
-body.ready .hero-sub,
-body.ready .hero-actions { animation: rise .7s ease .3s both; }
-@keyframes slam {
-  0%   { opacity: 0; transform: scale(1.35) translateY(-20px); }
-  60%  { opacity: 1; transform: scale(.97); }
-  100% { opacity: 1; transform: none; }
-}
-@keyframes rise {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: none; }
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 980px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-art { align-items: flex-start; }
-  .about-grid { grid-template-columns: 1fr; gap: 30px; }
-  .project-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-@media (max-width: 820px) {
-  .timer { display: none; }
-  .menu-toggle { display: block; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 72px; left: 0; right: 0;
-    padding: 22px 5%;
-    background: var(--asphalt);
-    border-bottom: 1px solid var(--line);
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .nav-links.open { display: flex; }
-  .nav-links a { padding: 10px 0; }
-  .nav-contact { text-align: center; }
-  .life-grid, .modal-details, .project-grid { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .section { padding: 76px 0; }
-  .footer-inner { flex-direction: column; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-  .reveal { opacity: 1; transform: none; }
-}
-/* ===== MOTORSPORT PASS ===== */
-:root {
-  --weave: repeating-conic-gradient(rgba(255,255,255,.02) 0 25%, transparent 0 50%) 0 0 / 6px 6px;
-}
-.rev-lights {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 5px;
-  padding: 7px 0;
-  pointer-events: none;
-}
-.rev-lights span {
-  width: 14px; height: 6px;
-  background: #1c1c23;
-  animation: revOn 2.6s infinite;
-  animation-delay: calc(var(--i) * .09s);
-}
-@keyframes revOn {
-  0%, 100% { background: #1c1c23; box-shadow: none; }
-  5%, 55%  { background: var(--red); box-shadow: 0 0 8px var(--red); }
-  62%      { background: #1c1c23; box-shadow: none; }
-}
-
-.circuit {
-  position: absolute;
-  right: -6%; top: 50%;
-  transform: translateY(-50%);
-  width: min(680px, 62vw);
-  height: auto;
-  z-index: 0;
-  pointer-events: none;
-}
-.circuit .track { fill: none; stroke: rgba(255,255,255,.10); stroke-width: 2; }
-.circuit .trace {
-  fill: none;
-  stroke: var(--red);
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-dasharray: 70 930;
-  animation: lap 6s linear infinite;
-  filter: drop-shadow(0 0 6px var(--red));
-}
-@keyframes lap { to { stroke-dashoffset: -1000; } }
-.hero-inner { z-index: 1; }
-
-.hero h1, .title, .modal h2 { transform: skewX(-5deg); }
-body.ready .hero h1 { animation-name: slamSkew; }
-@keyframes slamSkew {
-  0%   { opacity: 0; transform: skewX(-5deg) scale(1.35) translateY(-20px); }
-  60%  { opacity: 1; transform: skewX(-5deg) scale(.97); }
-  100% { opacity: 1; transform: skewX(-5deg); }
-}
-
-.section {
-  background:
-    repeating-linear-gradient(105deg, transparent 0 120px, rgba(255,255,255,.014) 120px 121px),
-    var(--carbon);
-}
-.about-panel, .contact, .life-card, .project-card, .modal, .gantry {
-  background: var(--weave), var(--panel);
-}
-.modal { background: var(--weave), var(--asphalt); }
-
-.project-card::after {
+.project-visual:before {
   content: "";
   position: absolute;
-  left: -10%; right: -10%;
-  bottom: 6px;
-  height: 10px;
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,.95) 25%, rgba(0,0,0,.95) 75%, transparent);
-  filter: blur(1px);
-  transform: translateX(-120%);
-  transition: transform .7s ease;
-  pointer-events: none;
+  width: 240px;
+  height: 240px;
+  border: 1px solid rgba(121,169,216,.3);
+  border-radius: 50%;
+  right: -35px;
+  top: -100px;
+  box-shadow:
+    0 0 0 30px rgba(121,169,216,.04),
+    0 0 0 60px rgba(121,169,216,.025);
+}
+
+.visual-label, .number {
+  position: relative;
   z-index: 1;
 }
-.project-card:hover::after { transform: translateX(0); }
 
-.build-id {
-  font-size: 1.1rem;
-  padding: 6px 12px;
-  border: 2px solid var(--carbon);
-  box-shadow: 4px 4px 0 var(--red);
+.visual-label {
+  font: 800 40px "Barlow Condensed";
+  color: rgba(255,255,255,.75);
 }
 
-@media (max-width: 820px) {
-  .circuit { opacity: .35; width: 90vw; right: -20%; }
-  .rev-lights span { width: 9px; }
+.number {
+  font: 700 11px "Barlow Condensed";
+  letter-spacing: .12em;
+  color: var(--red);
 }
 
-/* ===== REVIEW PASS: no endless loops, fewer repeats, less red ===== */
-.section, #projects, #experience, #life { background: var(--carbon); }
-.hero::before { display: none; }
-.about-panel, .contact, .life-card, .project-card, .gantry { background: var(--panel); }
-.modal { background: var(--asphalt); }
+.project-body { padding: 24px; }
 
-/* ticker: one static strip, no endless scroll */
-.ticker { background: var(--white); color: var(--carbon); }
-.ticker-track { animation: none; width: 100%; justify-content: center; flex-wrap: wrap; }
-.ticker-track span { color: var(--carbon); text-align: center; }
-.ticker-track span:nth-child(2) { display: none; }
-
-/* circuit: drawn once, then rests */
-.circuit .track { stroke: rgba(255,255,255,.10); }
-.circuit .trace {
-  stroke: var(--white);
-  stroke-width: 3;
-  stroke-dasharray: 1000 0;
-  stroke-opacity: .85;
-  animation: draw 2.6s ease-out 1 both;
-  filter: none;
-}
-@keyframes draw { from { stroke-dasharray: 0 1000; } to { stroke-dasharray: 1000 0; } }
-
-/* start gantry: lights come on once and stay lit */
-.gl { animation: glOnce .35s ease-out forwards; }
-.gl:nth-child(1) { animation-delay: .2s; }
-.gl:nth-child(2) { animation-delay: .5s; }
-.gl:nth-child(3) { animation-delay: .8s; }
-.gl:nth-child(4) { animation-delay: 1.1s; }
-.gl:nth-child(5) { animation-delay: 1.4s; }
-@keyframes glOnce {
-  to {
-    background: radial-gradient(circle at 50% 42%, #fff 0 6%, #ff4a3d 20%, #e10600 52%, #5c0200 100%);
-    box-shadow: 0 0 20px rgba(225,6,0,.8), 0 0 46px rgba(225,6,0,.4);
-  }
-}
-
-/* shift lights: one sweep, then off */
-.rev-lights span { animation: revOnce 1.4s ease-out 1 forwards; animation-delay: calc(var(--i) * .05s); }
-@keyframes revOnce {
-  0%   { background: #1c1c23; box-shadow: none; }
-  12%  { background: var(--red); box-shadow: 0 0 8px var(--red); }
-  40%, 100% { background: #1c1c23; box-shadow: none; }
-}
-
-/* fewer red repeats: titles and labels move to white / grey */
-.kicker { color: var(--mute); }
-.kicker::before { background: var(--white); }
-.title span, .contact h2 span {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--white);
-}
-.project-status { color: var(--mute); }
-.project-card:hover { border-color: #3a3a46; }
-.build-id { box-shadow: 4px 4px 0 var(--mute); }
-.brief, .hero-note { color: var(--mute); }
-.timeline-item .role { background: var(--white); color: var(--carbon); }
-.timeline-item::before { border-color: var(--white); }
-.life-card:hover { border-top-color: var(--white); }
-.detail-box { border-left-color: var(--mute); }
-.about-panel::before { background: var(--white); }
-.gantry::before { background: var(--red); }
-.modal-footnote { color: var(--mute); }
-.modal-number { color: var(--mute); }
-.skill:hover { border-color: var(--white); color: var(--white); }
-
-.modal-backdrop.open .modal { animation: modalIn .5s cubic-bezier(.2,1,.3,1) both; }
-@keyframes modalIn {
-  from { opacity: 0; transform: translateX(70px) skewX(-8deg); }
-  to   { opacity: 1; transform: none; }
-}
-
-.btn { position: relative; overflow: hidden; }
-.btn::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0; left: 0;
-  width: 40%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
-  transform: translateX(-120%);
-  pointer-events: none;
-}
-.btn:hover::after { animation: sweep .7s ease; }
-@keyframes sweep { to { transform: translateX(260%); } }
-
-.nav-links a:not(.nav-contact) { position: relative; }
-.nav-links a:not(.nav-contact)::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: -6px;
-  width: 100%; height: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s ease;
-}
-.nav-links a:not(.nav-contact):hover::after { transform: scaleX(1); }
-
-/* ===== AMBIENT: one slow light beam crosses the page every 18 seconds ===== */
-.pass {
-  position: fixed;
-  top: -10%; bottom: -10%; left: 0;
-  width: 30vw;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.05) 45%, rgba(225,6,0,.07) 55%, transparent);
-  transform: translateX(-40vw) skewX(-12deg);
-  animation: pass 18s ease-in-out infinite;
-}
-@keyframes pass {
-  0%, 70%  { transform: translateX(-40vw) skewX(-12deg); opacity: 0; }
-  72%      { opacity: 1; }
-  90%      { transform: translateX(130vw) skewX(-12deg); opacity: 1; }
-  92%, 100% { transform: translateX(130vw) skewX(-12deg); opacity: 0; }
-}
-/* ===== LIFE: slow, steady motion ===== */
-#dust {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-.lap-dot { fill: var(--white); filter: drop-shadow(0 0 6px rgba(255,255,255,.9)); }
-.hero-tag { animation: glowBreath 4s ease-in-out infinite; }
-@keyframes glowBreath {
-  0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
-  50% { box-shadow: 0 0 22px rgba(255,255,255,.25); }
-}
-.gl { animation-iteration-count: 1; }
-/* ===== BLUE + HANDWRITING ACCENTS (minimal) ===== */
-:root { --tech: #65C8FF; }
-.project-status { color: var(--tech); }
-.brief, .hero-note, .modal-footnote {
-  font-family: "Caveat", cursive;
+.meta {
+  font-size: 9px;
   font-weight: 700;
-  font-size: 1.6rem;
-  letter-spacing: 0;
-  text-transform: none;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blue);
 }
-.brief, .hero-note { color: var(--tech); }
-.modal-footnote { color: var(--mute); }
-/* ===== PERSONAL STORY (Beyond engineering) ===== */
-.life-story {
-  margin-top: 40px;
-  padding: 36px 40px;
+
+.project h3 {
+  font-size: 31px;
+  margin: 10px 0;
+}
+
+.project p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.project-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.project-foot b { color: var(--red); }
+
+.note {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 20px;
+}
+
+/* EXPERIENCE */
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+}
+
+.experience-card {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-left: 4px solid var(--white);
-  max-width: 860px;
+  padding: 26px;
+  min-height: 210px;
 }
-.life-story p { color: #c4c4cd; line-height: 1.85; margin: 0 0 18px; font-size: .98rem; }
-.life-story p:last-child, .life-story .life-story-close { margin-bottom: 0; }
-.life-story-close {
-  font-family: "Caveat", cursive;
-  font-weight: 700;
-  font-size: 1.7rem !important;
-  line-height: 1.3 !important;
-  color: var(--tech) !important;
-  margin-top: 22px !important;
+
+.symbol {
+  font: 800 34px "Barlow Condensed";
+  color: var(--red);
+}
+
+.experience-card h3 {
+  font-size: 27px;
+  margin: 14px 0 9px;
+}
+
+.experience-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* BEYOND ENGINEERING */
+
+.beyond-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.quote {
+  font: 800 clamp(38px,6vw,68px)/.98 "Barlow Condensed";
+  text-transform: uppercase;
+}
+
+.quote span { color: var(--red); }
+
+.beyond-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.beyond-list div {
+  padding: 15px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* CONTACT + FOOTER */
+
+.contact {
+  text-align: center;
+  padding: 110px 0 125px;
+}
+
+.contact h2 {
+  max-width: 850px;
+  margin: 0 auto 22px;
+}
+
+.contact p {
+  max-width: 510px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+.contact .actions { justify-content: center; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 23px 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-inner strong { color: var(--ink); }
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+  .navlinks { gap: 12px; font-size: 9px; }
+  .navlinks a:not(.nav-cta) { display: none; }
+  .hero { min-height: 610px; }
+  .hero-note { right: 7%; bottom: 8%; }
+  .section-head { display: block; }
+  .intro { margin-top: 18px; }
+  .about-grid,.beyond-grid { grid-template-columns: 1fr; gap: 30px; }
+  .portrait { min-height: 360px; }
+  .experience-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media(max-width:540px) {
+  .wrap { width: calc(100% - 32px); }
+  section { padding: 76px 0; }
+  .nav { min-height: 62px; }
+  .brand { font-size: 21px; }
+  .hero { min-height: 570px; padding: 70px 0; }
+  .hero-sub { font-size: 14px; }
+  .hero-note { font-size: 22px; }
+  .project-grid,.experience-grid { grid-template-columns: 1fr; }
+  .project-visual { height: 180px; }
+  .footer-inner { display: block; }
+  .footer-inner span { display: block; margin: 5px 0; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  .ticker-track { animation: none; }
+  *,*:before,*:after { transition: none !important; }
 }
 </style>
 </head>
 
 <body>
-<canvas id="dust" aria-hidden="true"></canvas>
-<div class="pass" aria-hidden="true"></div>
-<div class="intro" id="intro" aria-hidden="true">
-  <div class="gantry"><div class="gantry-lights"><span class="gl"></span><span class="gl"></span><span class="gl"></span><span class="gl"></span><span class="gl"></span></div></div>
-</div>
-<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="topbar">
-<div class="rev-lights" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span></div>
-  <nav class="nav wrap" aria-label="Main navigation">
-    <a href="#home" class="logo" aria-label="Home">AYDA<span>.</span></a>
-    <span class="timer" aria-hidden="true">SESSION <b id="lap">00:00.00</b></span>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Toggle navigation">☰ MENU</button>
-    <div class="nav-links" id="navLinks">
-      <a href="#projects">Projects</a>
+  <div class="wrap nav">
+    <a class="brand" href="#home">AYDA <span>DAOUD.</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
       <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#life">Beyond engineering</a>
-      <a href="#contact" class="nav-contact">Let's connect ↗</a>
-    </div>
-  </nav>
+      <a href="#projects">The Garage</a>
+      <a href="#experience">In the Mix</a>
+      <a href="#beyond">Beyond</a>
+      <a class="nav-cta" href="#contact">Let's talk ↗</a>
+    </nav>
+  </div>
 </header>
 
 <main>
+
 <section class="hero" id="home">
-<svg class="circuit" viewBox="0 0 600 400" aria-hidden="true">
-  <path id="lapPath" class="track" d="M40 300 C 80 80, 260 40, 320 120 S 420 330, 520 260 S 560 90, 470 70 S 300 230, 200 340 S 40 360, 40 300 Z"/>
-  <path class="trace" pathLength="1000" d="M40 300 C 80 80, 260 40, 320 120 S 420 330, 520 260 S 560 90, 470 70 S 300 230, 200 340 S 40 360, 40 300 Z"/>
-  <circle class="lap-dot" r="6"><animateMotion dur="14s" repeatCount="indefinite"><mpath href="#lapPath"/></animateMotion></circle>
-</svg>
-  <div class="hero-inner wrap">
-    <div>
-      <div class="hero-tag"><span class="dot"></span> Mechanical Engineering · AUB</div>
-      <h1>BUILT<br>TO <span class="outline">MOVE</span><span class="red">.</span></h1>
-      <p class="hero-sub">
-        Mechanical engineering, hands-on builds, and a little too much enthusiasm
-        for anything with wheels, moving parts, or a really good design problem.
-      </p>
-      <div class="hero-actions">
-        <a class="btn" href="#projects">Explore my builds ↗</a>
-        <a class="btn ghost" href="#about">Get to know me</a>
-      </div>
+  <div class="wrap hero-content">
+    <div class="eyebrow">Mechanical engineering · Creative by nature</div>
+    <h1>BUILT<br><span class="outline">TO MOVE.</span></h1>
+    <p class="hero-sub">I like ideas that refuse to stay on paper. Mechanical engineering is where creativity meets mechanics, and where I get to turn “what if?” into something real.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore my work ↗</a>
+      <a class="btn" href="#about">Get to know me</a>
     </div>
-    <div class="hero-art" aria-label="Racing start lights">
-      <div class="gantry">
-        <div class="gantry-lights"><span class="gl"></span><span class="gl"></span><span class="gl"></span><span class="gl"></span><span class="gl"></span></div>
-        <div class="gantry-label"><span>DESIGN. BUILD. REPEAT.</span><span>ENGINEER IN MOTION</span></div>
-      </div>
-      <span class="hero-note">always in the garage ↗</span>
-    </div>
+    <div class="scroll-cue">Scroll to enter the workshop ↓</div>
   </div>
+  <div class="hero-note">a little bit of everything<br>and a whole lot of heart.</div>
 </section>
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>DESIGN IT ✳ BUILD IT ✳ TEST IT ✳ BREAK IT DOWN ✳ BUILD IT BETTER ✳ </span>
-    <span>DESIGN IT ✳ BUILD IT ✳ TEST IT ✳ BREAK IT DOWN ✳ BUILD IT BETTER ✳ </span>
+    <span>DESIGN</span> ✳ BUILD ✳ <span>TEST</span> ✳ REPEAT ✳
+    <span>CREATE</span> ✳ ENGINEER ✳ <span>DESIGN</span> ✳ BUILD ✳
+    <span>TEST</span> ✳ REPEAT ✳ <span>CREATE</span> ✳ ENGINEER ✳
   </div>
 </div>
 
-<section class="section" id="projects">
+<section id="about">
   <div class="wrap">
-    <p class="kicker">01 / THE GARAGE</p>
-    <h2 class="title">BUILT, TESTED &amp;<br>IN <span>PROGRESS.</span></h2>
-    <p class="intro-text">
-      From digital models to actual hardware. Click any project to explore the
-      challenge, engineering decisions, tools, and progress behind the build.
-    </p>
-
-    <div class="filters" aria-label="Filter projects">
-      <button class="filter active" data-filter="all">ALL BUILDS</button>
-      <button class="filter" data-filter="vehicle">VEHICLES</button>
-      <button class="filter" data-filter="design">DESIGN</button>
-      <button class="filter" data-filter="prototype">PROTOTYPING</button>
-    </div>
-
-    <div class="project-grid" id="projectGrid"></div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <div class="wrap about-grid">
-    <div>
-      <p class="kicker">02 / WHO'S IN THE DRIVER'S SEAT?</p>
-      <h2 class="title">ENGINEERING<br>WITH <span>PURPOSE.</span></h2>
-      <span class="brief">the hands-on kind ✍</span>
-    </div>
-    <div class="about-panel">
-      <p>
-        I'm an artist with an engineer's brain. I write, read, draw, sing, and dance,
-        and if it's creative, I'm in. My mind thinks like an engineer, but the way I
-        see things is pure art. I'm always on the creative team and in the room where the main idea gets made.
-      </p>
-      <p>
-        I adore anything hands-on, because that's where what's going on in my head
-        finally comes out. I'm studying Mechanical Engineering at the American
-        University of Beirut, and I love the point where theory becomes something
-        you can actually build, test, improve, and put to work. Automotive engineering,
-        motorsports, mechanical design, prototyping, and the teamwork behind big
-        projects are where I feel most at home.
-      </p>
-      <p>
-        I care a lot, and I'm probably the most dedicated person you'll meet. I've been
-        through hell and back, and I'll still get up and keep going. People call me
-        a sunshine. I'm always smiling, even when I'm crying. I'm a ball of energy,
-        and I push everyone around me to be their best.
-      </p>
-      <p>
-        Family comes first. I don't smoke, I rarely drink or party, and I love my
-        friends and what I do. My life is busy, and I love every part of it.
-      </p>
-      <h3 class="toolbox-label">THE TOOLBOX</h3>
-      <div class="skill-list">
-        <span class="skill">Mechanical Design</span>
-        <span class="skill">3D Modeling</span>
-        <span class="skill">3D Printing</span>
-        <span class="skill">Prototyping</span>
-        <span class="skill">Mechanical Assembly</span>
-        <span class="skill">Electronics Integration</span>
-        <span class="skill">SolidWorks</span>
-        <span class="skill">ANSYS</span>
-        <span class="skill">Teamwork</span>
-        <span class="skill">Problem-Solving</span>
+    <div class="section-head">
+      <div>
+        <div class="kicker">01 / The person behind the projects</div>
+        <h2>More than<br>one gear.</h2>
       </div>
-      <p class="note">
-        Software and skills listed here should reflect tools and methods you
-        have actually used. Add your proficiency levels as you finalize your CV.
-      </p>
+      <p class="intro">An engineer's mind. An artist's soul. A brain with approximately seventeen tabs open.</p>
     </div>
-  </div>
-</section>
 
-<section class="section" id="experience">
-  <div class="wrap">
-    <p class="kicker">03 / THE PIT CREW</p>
-    <h2 class="title">WHERE I'VE BEEN<br><span>GETTING MY HANDS DIRTY.</span></h2>
-    <p class="intro-text">Engineering teams, student leadership, and maker-space work.</p>
+    <div class="about-grid">
+      <div class="portrait">
+        <div class="photo-note">hi, that's me!</div>
+      </div>
 
-    <div class="timeline">
-      <article class="timeline-item">
-        <span class="role">VEHICLE ENGINEERING</span>
-        <h3>AUB Super Mileage Team</h3>
-        <p>Contributing to the restoration of the team's 2019 car, including work around the motor, brakes, wheels, steering and vehicle components. Explored a 3D-printed steering attachment prototype through the Red Room.</p>
-      </article>
-      <article class="timeline-item">
-        <span class="role">TEAM DEVELOPMENT / VEHICLE DESIGN</span>
-        <h3>Baja SAE</h3>
-        <p>Helping establish a new Baja SAE team and exploring early powertrain and drivetrain concepts, with attention to off-road capability and endurance reliability.</p>
-      </article>
-      <article class="timeline-item">
-        <span class="role">MAKERSPACE / PROTOTYPING</span>
-        <h3>AUB Red Room · JEDI</h3>
-        <p>Hands-on experience with 3D modeling, printing workflows, physical assembly, prototyping and electronics in engineering project development.</p>
-      </article>
-      <article class="timeline-item">
-        <span class="role">STUDENT LEADERSHIP</span>
-        <h3>ASME AUB · Secretary</h3>
-        <p>Supporting organizational follow-up, meeting minutes, documentation, notices, archives and communication to help the student chapter run smoothly.</p>
-      </article>
-      <article class="timeline-item">
-        <span class="role">COMMUNICATIONS</span>
-        <h3>LAAS · PR Officer</h3>
-        <p>Contributing to outreach and communication for the Lebanese Aerospace and Automotive Society and its engineering activities.</p>
-      </article>
-      <article class="timeline-item">
-        <span class="role">YOUTH LEADERSHIP</span>
-        <h3>Scouting · Cheftaine Meute Akela</h3>
-        <p>Planning activities and supporting group experiences that develop teamwork, responsibility, creativity and outdoor skills.</p>
-      </article>
-    </div>
-  </div>
-</section>
+      <div class="about-copy">
+        <p class="lead">I've never really been good at sticking to just one thing.</p>
 
-<section class="section" id="life">
-  <div class="wrap">
-    <p class="kicker">04 / OUTSIDE THE WORKSHOP</p>
-    <h2 class="title">BUILT DIFFERENT.<br><span>ALSO VERY BUSY.</span></h2>
-    <p class="intro-text">
-      Engineering is a big part of my life. It isn't the only thing that keeps me moving.
-    </p>
-    <div class="life-story">
-      <p>I'm an engineer by training, an artist by nature, and a little bit of everything in between.</p>
-      <p>I love creating in every form: writing, reading, drawing, singing, dancing, and turning random ideas into something real. Creativity has always been a huge part of who I am, and I think that's what makes the way I approach engineering a little different. My mind works in mechanisms, structures, and systems, but it also works in colors, stories, possibilities, and ideas that haven't been tried yet.</p>
-      <p>I'm usually the person throwing out ideas, joining the creative team, or helping turn a completely random thought into an actual project. I love hands-on work because it gives me a way to translate what's happening in my head into something I can see, touch, test, and improve. For me, engineering isn't just about finding the right answer. It's about exploring all the ways you could get there.</p>
-      <p>I'm also someone who cares deeply about what I do and the people I do it with. I believe in showing up, putting in the work, and giving things everything I've got. I'm persistent, sometimes stubbornly so, and I don't give up just because something gets difficult. I love working with people, pushing ideas further, encouraging those around me, and being part of teams where everyone brings something different to the table.</p>
-      <p>Outside the workshop, I'm a family-first person, a loyal friend, and someone who somehow manages to fill every spare moment with another activity, idea, or project. I'm often told I bring sunshine and energy wherever I go. I genuinely love being busy, creating, learning, and making the most out of life.</p>
-      <p class="life-story-close">I like to think I'm proof that an analytical mind and an artistic soul can work together. And honestly, I wouldn't have it any other way.</p>
-    </div>
-    <div class="life-grid">
-      <article class="life-card">
-        <div class="life-icon">🏃‍♀️</div>
-        <h3>TRACK &amp; FIELD</h3>
-        <p>Training with AUB Track &amp; Field, building consistency and working toward personal running goals.</p>
-      </article>
-      <article class="life-card">
-        <div class="life-icon">🏉</div>
-        <h3>WOMEN'S RUGBY</h3>
-        <p>Teamwork, communication, quick decisions, and showing up for the people beside you.</p>
-      </article>
-      <article class="life-card">
-        <div class="life-icon">🥊</div>
-        <h3>BOXING</h3>
-        <p>Four years of boxing experience and lessons in discipline, focus and persistence.</p>
-      </article>
-      <article class="life-card">
-        <div class="life-icon">🏋️</div>
-        <h3>SPORTS &amp; FITNESS</h3>
-        <p>Staying active, challenging myself and making movement part of my routine.</p>
-      </article>
-      <article class="life-card">
-        <div class="life-icon">⚙️</div>
-        <h3>ENGINEERING SOCIETIES</h3>
-        <p>Getting involved in hands-on engineering, student initiatives, and opportunities to connect people with technical projects.</p>
-      </article>
-      <article class="life-card">
-        <div class="life-icon">🏕️</div>
-        <h3>SCOUTING</h3>
-        <p>Planning activities, leading a group, and making room for creativity, teamwork and adventure.</p>
-      </article>
-    </div>
-  </div>
-</section>
+        <p>I write, read, draw, sing, dance, build, design, experiment, and somehow always find room for one more thing. I love art in all its forms, and creativity has always been my way of understanding and expressing the world around me. It's also what I bring into engineering.</p>
 
-<section class="section" id="contact">
-  <div class="wrap">
-    <div class="contact">
-      <p class="kicker">05 / THE NEXT OPPORTUNITY</p>
-      <h2>LET'S BUILD<br><span>SOMETHING.</span></h2>
-      <p>
-        Interested in automotive engineering, mechanical design, prototyping,
-        or motorsports opportunities? Let's connect.
-      </p>
-      <div class="contact-links">
-        <!-- Replace these placeholders with your actual contact details -->
-        <a class="btn" href="mailto:YOUR_EMAIL@example.com">Email me ↗</a>
-        <a class="btn ghost" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <p>My brain is constantly running: ideas, possibilities, little details, big plans, and sometimes completely random concepts that I just have to try. I'm usually somewhere in the middle of the brainstorming session, throwing ideas around, helping shape the creative direction, or figuring out how we can turn something that exists only in our heads into something real.</p>
+
+        <p>That's probably why I love hands-on engineering so much. Give me a workshop, a set of tools, a prototype, and a problem to solve, and I'm happy. I love taking an idea, getting my hands dirty, making mistakes, trying again, and watching it slowly come together.</p>
+
+        <p>I'm passionate about the people I make things with. I care deeply, get invested, and give everything I have to the things and people that matter to me. I'm persistent, occasionally stubborn, and I want the people around me to grow, try, and push themselves.</p>
+
+        <p>I'm ambitious, curious, creative, occasionally chaotic, and always ready to make something happen. I don't want to choose between being an artist and being an engineer. I want to bring both into everything I do.</p>
+
+        <div class="hand-note">People call me sunshine. I'll take it. ☼</div>
+
+        <div class="tags">
+          <span class="tag">Creative problem-solving</span>
+          <span class="tag">Hands-on making</span>
+          <span class="tag">Teamwork</span>
+          <span class="tag">Always learning</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">02 / The garage</div>
+        <h2>Ideas in<br>motion.</h2>
+      </div>
+      <p class="intro">A collection of mechanisms, prototypes, circuits, and engineering problems I've had the pleasure of getting my hands on.</p>
+    </div>
+
+    <div class="project-grid">
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">01 / MECH</span><span class="number">MECH 332</span></div>
+        <div class="project-body">
+          <div class="meta">Mechanical design · CAD · Kinematics</div>
+          <h3>Automated Screw-Cap Mechanism</h3>
+          <p>A slider-crank system for vertical gripper movement, paired with motorized cap rotation. Developed through iterative SolidWorks design, Motion Simulation, and Python kinematic analysis.</p>
+          <div class="project-foot"><span>20+ design iterations</span><b>First place / highest grade</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">02 / SMART</span><span class="number">ARDUINO + TINKERCAD</span></div>
+        <div class="project-body">
+          <div class="meta">Embedded systems · Automation</div>
+          <h3>Smart Home Automation</h3>
+          <p>A simulated smart-home system integrating environmental monitoring, automated load shedding, curtains, ventilation control, and a fire-alert indicator.</p>
+          <div class="project-foot"><span>Sensor integration</span><b>Functional simulation</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">03 / TEST</span><span class="number">ENGINEERING MATERIALS</span></div>
+        <div class="project-body">
+          <div class="meta">Machine design · Materials</div>
+          <h3>Benchtop Materials Testing Machine</h3>
+          <p>A benchtop testing-machine project built as part of Engineering Materials, bringing material behavior and mechanical design into a physical setup.</p>
+          <div class="project-foot"><span>Build + prototype</span><b>Details to come</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">04 / BAJA</span><span class="number">AUB MOTORSPORTS</span></div>
+        <div class="project-body">
+          <div class="meta">Vehicle systems · Team engineering</div>
+          <h3>Baja SAE</h3>
+          <p>Helping establish AUB's Baja team, exploring drivetrain architecture, AWD versus RWD, chain drive and jackshaft layouts, CVT integration, and endurance-focused reliability.</p>
+          <div class="project-foot"><span>Team development</span><b>In progress</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">05 / ECO</span><span class="number">AUB SUPERMILEAGE</span></div>
+        <div class="project-body">
+          <div class="meta">Vehicle restoration · Prototyping</div>
+          <h3>Super Mileage Team</h3>
+          <p>Working on the restoration of the team's 2019 vehicle, including steering, brakes, wheels, motor, and body components. Prototyped a steering attachment through 3D printing.</p>
+          <div class="project-foot"><span>3D-printed prototype</span><b>In progress</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">06 / MAKER</span><span class="number">AUB RED ROOM · JEDI</span></div>
+        <div class="project-body">
+          <div class="meta">3D printing · Fabrication · Electronics</div>
+          <h3>Red Room / JEDI</h3>
+          <p>Turning student designs into physical prototypes through modeling, slicing, 3D printing, manual assembly, electronics integration, and hands-on project development.</p>
+          <div class="project-foot"><span>Design to prototype</span><b>Ongoing</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">07 / MICRO</span><span class="number">MECHANISM PROJECT</span></div>
+        <div class="project-body">
+          <div class="meta">Mechanical systems · Fabrication</div>
+          <h3>Microcar Mechanism</h3>
+          <p>A compact mechanism project built around a wooden base, belt-and-pulley transmission, and a rotating shaft passing through the base plate.</p>
+          <div class="project-foot"><span>Prototype development</span><b>In progress</b></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual"><span class="visual-label">08 / MECH</span><span class="number">MECH 421</span></div>
+        <div class="project-body">
+          <div class="meta">Manufacturing · CAD · FEA</div>
+          <h3>Dumper Truck</h3>
+          <p>Developing a compact truck for a challenging course track, focusing on payload stability, obstacle traversal, drivetrain layout, and a rear-lowering dumping concept.</p>
+          <div class="project-foot"><span>SolidWorks + ANSYS</span><b>In progress</b></div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="note">Project write-ups are a work in progress. Build photos, drawings, calculations, and lessons learned will be added as each project develops.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">03 / In the mix</div>
+        <h2>Building<br>with people.</h2>
+      </div>
+      <p class="intro">Engineering doesn't happen in a vacuum. Some of my favourite work happens when a team gets together and makes something happen.</p>
+    </div>
+
+    <div class="experience-grid">
+      <article class="experience-card">
+        <div class="symbol">01</div>
+        <h3>ASME AUB</h3>
+        <p>Secretary. Supporting communication, documentation, coordination, and hands-on mechanical engineering activities.</p>
+      </article>
+
+      <article class="experience-card">
+        <div class="symbol">02</div>
+        <h3>LAAS</h3>
+        <p>Public Relations Officer at the Lebanese Aerospace and Automotive Society, helping connect engineering communities and opportunities.</p>
+      </article>
+
+      <article class="experience-card">
+        <div class="symbol">03</div>
+        <h3>Scouting</h3>
+        <p>Scout leader, planning activities, supporting team members, and creating experiences around teamwork and growth.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="beyond" id="beyond">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="kicker">04 / Outside the workshop</div>
+        <h2>Still in<br>motion.</h2>
+      </div>
+      <p class="intro">The best ideas don't always happen at a desk. Life outside engineering is a big part of how I think, create, and work with people.</p>
+    </div>
+
+    <div class="beyond-grid">
+      <div class="quote">Curious by default.<br><span>Creative on purpose.</span><br>Always moving.</div>
+      <div class="beyond-list">
+        <div>Writing & reading</div>
+        <div>Drawing & art</div>
+        <div>Singing</div>
+        <div>Dance</div>
+        <div>Track & field</div>
+        <div>Women's rugby</div>
+        <div>Boxing</div>
+        <div>Scouting</div>
+        <div>Motorsports</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="kicker">05 / Your move</div>
+    <h2>Have an idea?<br>Let's make it happen.</h2>
+    <p>Always happy to connect about engineering, motorsports, creative projects, collaborations, and opportunities to build something meaningful.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:ayda.r.daoud2006@gmail.com">Email me ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/ayda-daoud" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
   <div class="wrap footer-inner">
-    <span>© <span id="year"></span> · ENGINEER IN MOTION.</span>
-    <span>DESIGNED WITH CURIOSITY &amp; A LITTLE RACING ENERGY 🏁</span>
+    <strong>AYDA DAOUD · BUILT TO MOVE.</strong>
+    <span>Mechanical engineering, with a creative twist.</span>
+    <span>© <span id="year"></span></span>
   </div>
 </footer>
 
-<!-- CLICKABLE PROJECT CASE STUDY -->
-<div class="modal-backdrop" id="projectModal" aria-hidden="true">
-  <article class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal-close" id="modalClose" aria-label="Close case study">✕</button>
-    <div class="modal-number" id="modalNumber"></div>
-    <div class="modal-status" id="modalStatus"></div>
-    <h2 id="modalTitle"></h2>
-    <p class="modal-lead" id="modalLead"></p>
-    <div id="modalVisual"></div>
-    <div class="modal-details" id="modalDetails"></div>
-    <div class="modal-gallery">
-      <h3>FROM THE WORKSHOP 📸</h3>
-      <div class="gallery-grid" id="modalGallery"></div>
-    </div>
-    <p class="modal-footnote">Every build has a story. This one's still being written. ↗</p>
-  </article>
-</div>
-
 <script>
-/*
-  PHOTO SETUP:
-  1. Create a folder named "images" beside this HTML file.
-  2. Extract your pictures into that folder.
-  3. Replace the example image paths below with your actual filenames.
-  4. Leave image: "" if a project does not have a photo yet.
-
-  Example:
-  image: "images/my-supermileage-car.jpg",
-  gallery: [
-    { src: "images/steering-prototype.jpg", caption: "Steering attachment prototype" }
-  ]
-*/
-
-const PROJECTS = [
-  {
-    id: "materials",
-    number: "BUILD 001 / MATERIALS",
-    title: "Benchtop Materials Testing Machine",
-    status: "COURSE PROJECT",
-    category: ["prototype", "design"],
-    icon: "⚙️",
-    image: "images/mech_340.jpeg",
-    gallery: [],
-    summary: "Turning materials-testing concepts into a physical benchtop machine.",
-    lead: "A hands-on Engineering Materials project focused on building a benchtop machine and connecting the theory of material behavior with a practical setup.",
-    sections: [
-      {
-        title: "THE OBJECTIVE",
-        text: "Build a benchtop machine for materials testing and connect material behavior concepts with a practical engineering setup."
-      },
-      {
-        title: "MY WORK",
-        text: "Built as part of Engineering Materials coursework. Add the exact components you designed, manufactured or assembled, and specify the test the machine performs."
-      },
-      {
-        title: "ENGINEERING FOCUS",
-        text: "Mechanical design, machine components, material behavior, practical assembly and testing."
-      },
-      {
-        title: "TOOLS & RESULTS",
-        text: "Add the actual tools, test procedure, measurements and conclusions once verified. No performance results are assumed here."
-      }
-    ]
-  },
-  {
-    id: "supermileage",
-    number: "BUILD 002 / EFFICIENCY",
-    title: "AUB Super Mileage Team",
-    status: "RESTORATION / ONGOING",
-    category: ["vehicle", "prototype"],
-    icon: "🏎️",
-    image: "images/supermileage.jpeg",
-    gallery: [],
-    summary: "Helping bring the team's 2019 vehicle back to life.",
-    lead: "Contributing to the restoration of an existing Super Mileage vehicle, with attention to its major mechanical systems and a practical steering prototype.",
-    sections: [
-      {
-        title: "THE CHALLENGE",
-        text: "Restore an existing car and assess its major systems before moving toward a reliable running vehicle."
-      },
-      {
-        title: "MY CONTRIBUTION",
-        text: "Working on the restoration effort involving the motor, cover, brakes, wheels and steering."
-      },
-      {
-        title: "RAPID PROTOTYPING",
-        text: "A steering attachment was prototyped using 3D printing through the Red Room. ABS was being considered for the final version."
-      },
-      {
-        title: "NEXT STEPS",
-        text: "Document inspections, repairs, fit checks and testing actually completed. Add before-and-after pictures and details of the steering attachment."
-      }
-    ]
-  },
-  {
-    id: "baja",
-    number: "BUILD 003 / OFF-ROAD",
-    title: "Baja SAE",
-    status: "TEAM DEVELOPMENT / ONGOING",
-    category: ["vehicle", "design"],
-    icon: "🏁",
-    image: "images/baja.jpeg",
-    gallery: [],
-    summary: "Exploring drivetrain concepts for an off-road endurance vehicle.",
-    lead: "Helping establish a new Baja SAE team and exploring early vehicle architecture with an emphasis on off-road capability and endurance reliability.",
-    sections: [
-      {
-        title: "THE CHALLENGE",
-        text: "Develop an initial vehicle concept that can handle demanding terrain while remaining practical to build, maintain and operate."
-      },
-      {
-        title: "MY CONTRIBUTION",
-        text: "Helping establish the team and exploring early powertrain and drivetrain options, including AWD versus RWD, chain drive with a jackshaft, a Rehlko CH440 engine and a CVT."
-      },
-      {
-        title: "DESIGN TRADE-OFFS",
-        text: "Drivetrain architecture affects traction, packaging, weight, complexity, maintenance and reliability. These options need to be assessed against the competition requirements."
-      },
-      {
-        title: "CURRENT STAGE",
-        text: "Concept development. Add calculations, CAD, component selection, cost estimates and validated decisions as the project progresses."
-      }
-    ]
-  },
-  {
-    id: "redroom",
-    number: "BUILD 004 / MAKERSPACE",
-    title: "Red Room / JEDI",
-    status: "HANDS-ON ENGINEERING",
-    category: ["prototype", "design"],
-    icon: "🛠️",
-    image: "",
-    gallery: [],
-    summary: "From digital models to printed parts, assembly and electronics.",
-    lead: "Working across digital design and physical making through the AUB Red Room's Junior Engineering Design Innovator activities.",
-    sections: [
-      {
-        title: "THE WORKFLOW",
-        text: "Take a digital design toward a physical prototype, then assemble, inspect and refine the result."
-      },
-      {
-        title: "MY CONTRIBUTION",
-        text: "Contributing to 3D modeling, preparing and slicing designs for printing, manually joining printed parts, working with electronics and developing prototypes."
-      },
-      {
-        title: "SKILLS IN PRACTICE",
-        text: "CAD-to-part workflow, additive manufacturing, assembly, prototyping and hands-on problem-solving."
-      },
-      {
-        title: "EVIDENCE TO ADD",
-        text: "Include CAD screenshots, slicer previews, printed components, assembly photos and examples of design iterations."
-      }
-    ]
-  },
-  {
-    id: "microcar",
-    number: "BUILD 005 / MECHANISMS",
-    title: "Microcar Mechanism",
-    status: "IN PROGRESS / COURSE PROJECT",
-    category: ["vehicle", "design", "prototype"],
-    icon: "🔩",
-    image: "images/microcar.jpeg",
-    gallery: [],
-    summary: "Working out a compact belt-and-pulley drive layout.",
-    lead: "A small-scale mechanical design project exploring how a belt drive, two pulleys and a rotating shaft can fit onto a compact base.",
-    sections: [
-      {
-        title: "THE DESIGN BRIEF",
-        text: "Work with a wooden base measuring approximately 20 × 25 cm and arrange a belt, two pulleys and a shaft that passes through the base."
-      },
-      {
-        title: "CURRENT DESIGN WORK",
-        text: "Developing the component layout and considering shaft positioning and the way the drive components fit together."
-      },
-      {
-        title: "ENGINEERING QUESTIONS",
-        text: "Pulley alignment, belt tension, shaft support, clearances and the location of the hole through the base all affect the mechanism."
-      },
-      {
-        title: "CURRENT STAGE",
-        text: "In progress. Add the final layout, dimensions, assembly photos and results after construction and testing."
-      }
-    ]
-  },
-  {
-    id: "dumper",
-    number: "BUILD 006 / VEHICLE DESIGN",
-    title: "Dumper Truck",
-    status: "IN PROGRESS / COURSE PROJECT",
-    category: ["vehicle", "design"],
-    icon: "🚚",
-    image: "images/dumper.jpeg",
-    gallery: [],
-    summary: "A compact vehicle challenged by payload, stability and track obstacles.",
-    lead: "Designing a small dumper truck for a manufacturing processes project involving payload, stability, obstacles and a dumping mechanism.",
-    sections: [
-      {
-        title: "THE DESIGN BRIEF",
-        text: "Develop a vehicle within a maximum envelope of 450 mm length and 250 mm width, capable of carrying the specified load and navigating a track."
-      },
-      {
-        title: "DESIGN EXPLORATION",
-        text: "Exploring a dumping concept that lowers the rear end rather than lifting the front, alongside ideas for helping the vehicle cross track gaps."
-      },
-      {
-        title: "ENGINEERING TRADE-OFFS",
-        text: "Payload position, center of gravity, wheelbase, ground clearance, obstacle geometry and the dumping mechanism all influence stability and performance."
-      },
-      {
-        title: "CURRENT STAGE",
-        text: "In progress. SolidWorks and ANSYS are part of the project workflow. Add validated CAD, simulation screenshots, calculations, manufacturing details and physical test results as they become available."
-      }
-    ]
-  },
-  {
-    id: "screwcap",
-    number: "BUILD 007 / KINEMATICS",
-    title: "Automated Screw-Cap Mechanism",
-    status: "MECH 332 / SIMULATED",
-    category: ["design", "prototype"],
-    icon: "🔩",
-    image: "images/mech332.png",
-    gallery: [
-      { src: "images/mech332.png", caption: "SolidWorks CAD of the bottle-capping mechanism" }
-    ],
-    summary: "A slider-crank gripper and motorized rotation that tighten a bottle cap.",
-    lead: "Designed and simulated an automated bottle-capping mechanism combining a slider-crank system for vertical gripper movement with motorized rotation to tighten the cap.",
-    sections: [
-      {
-        title: "PROJECT OVERVIEW",
-        text: "Designed and simulated an automated bottle-capping mechanism combining a slider-crank system for vertical gripper movement with motorized rotation to tighten the cap."
-      },
-      {
-        title: "MY CONTRIBUTIONS",
-        text: "Developed the mechanical design and analyzed the system's kinematics using Python. Built and tested the mechanism in SolidWorks Motion Simulation. Completed more than 20 design iterations to resolve geometric interference, gripper issues, and unstable simulation contact. Analyzed the approach, pressing, rotation, and retraction sequence."
-      },
-      {
-        title: "ENGINEERING RESULTS",
-        text: "Approximately 2.75 cap rotations. 11 mm vertical travel with a 4 mm thread pitch. Reported vertical approach speed of approximately 0.045 m/s. Achieved first place / the highest grade in the project."
-      },
-      {
-        title: "TOOLS & PORTFOLIO ANGLE",
-        text: "SolidWorks, Python, kinematics, motion simulation. Shows mechanical design, kinematic analysis, CAD simulation, iterative problem-solving, and mechanism optimization."
-      }
-    ]
-  },
-  {
-    id: "smarthome",
-    number: "BUILD 008 / AUTOMATION",
-    title: "Smart Home Automation System",
-    status: "TINKERCAD / SIMULATED",
-    category: ["prototype", "design"],
-    icon: "💡",
-    image: "images/mech_430.png",
-    gallery: [
-      { src: "images/mech_430.png", caption: "Tinkercad Arduino circuit" }
-    ],
-    summary: "Monitors energy, light and temperature, then responds automatically.",
-    lead: "Designed and simulated a smart-home system that monitors environmental conditions and energy use, then responds automatically to different conditions.",
-    sections: [
-      {
-        title: "PROJECT OVERVIEW",
-        text: "Designed and simulated a smart-home system that monitors environmental conditions and energy use, then responds automatically to different conditions."
-      },
-      {
-        title: "MY CONTRIBUTIONS",
-        text: "Designed the circuit, performed calculations, organized the circuit dividers, and handled the wiring. Implemented monitoring of energy consumption, light intensity, and indoor/outdoor temperature. Developed automated load shedding to manage energy use. Integrated automated curtains and ventilation control. Programmed the fan to activate when the indoor temperature was at least 3°C higher than the outdoor temperature. Added an LED warning response triggered by a fire-alert tone. Simulated, debugged, and tested the system until it functioned as intended."
-      },
-      {
-        title: "OUTCOME",
-        text: "A fully functional simulated smart-home automation system. You reported that yours was the only fully functional implementation in your cohort."
-      },
-      {
-        title: "TOOLS & PORTFOLIO ANGLE",
-        text: "Tinkercad, Arduino, circuit design, automation logic. Shows embedded systems, sensor integration, circuit design, conditional control logic, energy management, and troubleshooting."
-      }
-    ]
-  }
-];
-
-const projectGrid = document.getElementById("projectGrid");
-const modal = document.getElementById("projectModal");
-const modalClose = document.getElementById("modalClose");
-const modalNumber = document.getElementById("modalNumber");
-const modalStatus = document.getElementById("modalStatus");
-const modalTitle = document.getElementById("modalTitle");
-const modalLead = document.getElementById("modalLead");
-const modalVisual = document.getElementById("modalVisual");
-const modalDetails = document.getElementById("modalDetails");
-const modalGallery = document.getElementById("modalGallery");
-
-let previousFocus = null;
-
-function makeElement(tag, className, text) {
-  const el = document.createElement(tag);
-  if (className) el.className = className;
-  if (text !== undefined) el.textContent = text;
-  return el;
-}
-
-function addImageFallback(img, fallback) {
-  img.addEventListener("error", () => {
-    const parent = img.parentElement;
-    img.remove();
-    if (parent && fallback) {
-      parent.appendChild(makeElement("span", "image-emoji", fallback));
-    }
-  }, { once: true });
-}
-
-function renderProjects() {
-  projectGrid.replaceChildren();
-
-  PROJECTS.forEach((project, index) => {
-    const card = makeElement("button", "project-card");
-    card.type = "button";
-    card.dataset.project = project.id;
-    card.dataset.category = project.category.join(" ");
-    card.setAttribute("aria-label", "Open case study: " + project.title);
-
-    const visual = makeElement("div", "project-image");
-    visual.appendChild(makeElement("span", "build-id", "BUILD " + String(index + 1).padStart(3, "0")));
-
-    if (project.image) {
-      const img = document.createElement("img");
-      img.src = project.image;
-      img.alt = project.title + " project photograph";
-      addImageFallback(img, project.icon);
-      visual.appendChild(img);
-    } else {
-      visual.appendChild(makeElement("span", "image-emoji", project.icon));
-    }
-
-    const copy = makeElement("div", "project-copy");
-    copy.appendChild(makeElement("span", "project-status", project.status));
-    copy.appendChild(makeElement("h3", "", project.title));
-    copy.appendChild(makeElement("p", "", project.summary));
-    copy.appendChild(makeElement("span", "project-open", "OPEN CASE FILE ↗"));
-
-    card.append(visual, copy);
-    card.addEventListener("click", () => openProject(project.id, card));
-    projectGrid.appendChild(card);
-  });
-}
-
-function openProject(id, trigger) {
-  const project = PROJECTS.find(item => item.id === id);
-  if (!project) return;
-
-  previousFocus = trigger;
-  modalNumber.textContent = project.number;
-  modalStatus.textContent = project.status;
-  modalTitle.textContent = project.title;
-  modalLead.textContent = project.lead;
-
-  modalVisual.replaceChildren();
-  if (project.image) {
-    const img = document.createElement("img");
-    img.className = "modal-main-image";
-    img.src = project.image;
-    img.alt = project.title + " main project photograph";
-    img.addEventListener("error", () => {
-      img.replaceWith(createPlaceholder(project.icon));
-    }, { once: true });
-    modalVisual.appendChild(img);
-  } else {
-    modalVisual.appendChild(createPlaceholder(project.icon));
-  }
-
-  modalDetails.replaceChildren();
-  project.sections.forEach(section => {
-    const box = makeElement("section", "detail-box");
-    box.appendChild(makeElement("h3", "", section.title));
-    box.appendChild(makeElement("p", "", section.text));
-    modalDetails.appendChild(box);
-  });
-
-  modalGallery.replaceChildren();
-  const images = project.gallery || [];
-
-  if (images.length === 0) {
-    modalGallery.appendChild(makeElement("div", "gallery-item empty", "ADD PROJECT PHOTOS"));
-  } else {
-    images.forEach(item => {
-      const figure = makeElement("figure", "gallery-item");
-      const img = document.createElement("img");
-      img.src = item.src;
-      img.alt = item.caption || project.title + " project image";
-      img.loading = "lazy";
-      img.addEventListener("error", () => {
-        figure.replaceChildren(makeElement("div", "empty", "IMAGE NOT FOUND"));
-      }, { once: true });
-      figure.appendChild(img);
-      figure.appendChild(makeElement("figcaption", "", item.caption || ""));
-      modalGallery.appendChild(figure);
-    });
-  }
-
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-  modalClose.focus();
-}
-
-function createPlaceholder(icon) {
-  const box = makeElement("div", "modal-placeholder");
-  box.appendChild(makeElement("div", "placeholder-icon", icon));
-  box.appendChild(makeElement("strong", "", "PROJECT PHOTO"));
-  box.appendChild(makeElement("span", "", "Add your own photo path in the PROJECTS section."));
-  return box;
-}
-
-function closeProject() {
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
-  if (previousFocus) previousFocus.focus();
-}
-
-document.querySelectorAll(".filter").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach(item => item.classList.toggle("active", item === button));
-    const selected = button.dataset.filter;
-    document.querySelectorAll(".project-card").forEach(card => {
-      const categories = card.dataset.category.split(" ");
-      card.hidden = selected !== "all" && !categories.includes(selected);
-    });
-  });
-});
-
-modalClose.addEventListener("click", closeProject);
-modal.addEventListener("click", event => {
-  if (event.target === modal) closeProject();
-});
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape" && modal.classList.contains("open")) closeProject();
-});
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
-});
-
 document.getElementById("year").textContent = new Date().getFullYear();
-renderProjects();
-
-/* ===== EXTRAS: intro, session timer, progress line, reveal ===== */
-(function () {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Start-lights intro, white flash, then hero slam-in
-  const intro = document.getElementById("intro");
-  const finishIntro = () => { intro.classList.add("done"); document.body.classList.add("ready"); };
-  intro.addEventListener("click", finishIntro);
-  if (reduce) {
-    finishIntro();
-  } else {
-    setTimeout(() => intro.classList.add("go"), 2300);
-    setTimeout(() => intro.classList.add("hit"), 2400);
-    setTimeout(finishIntro, 2900);
-  }
-
-  // Session timer
-  const lap = document.getElementById("lap");
-  const started = performance.now();
-  if (!reduce) {
-    setInterval(() => {
-      const ms = performance.now() - started;
-      const m = Math.floor(ms / 60000);
-      const s = Math.floor((ms % 60000) / 1000);
-      const cs = Math.floor((ms % 1000) / 10);
-      lap.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0") + "." + String(cs).padStart(2, "0");
-    }, 50);
-  }
-
-  // Progress line
-  const progress = document.getElementById("progress");
-  const updateProgress = () => {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    progress.style.transform = "scaleX(" + (max > 0 ? scrollY / max : 0) + ")";
-  };
-  addEventListener("scroll", updateProgress, { passive: true });
-  updateProgress();
-
-  // Reveal sections as you scroll
-  if (!reduce && "IntersectionObserver" in window) {
-    const items = document.querySelectorAll(".section .wrap > *, .hero-art, .ticker");
-    items.forEach(el => el.classList.add("reveal"));
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    items.forEach(el => io.observe(el));
-  }
-
-})();
 </script>
 
-
-<script>
-(function () {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  // Circuit draws gently as you scroll down past the hero
-  const trace = document.querySelector(".circuit .trace");
-  const hero = document.getElementById("home");
-  addEventListener("scroll", () => {
-    if (!trace) return;
-    const f = 0.3 + 0.7 * Math.min(scrollY / (hero.offsetHeight * 0.8), 1);
-    trace.style.strokeDasharray = (f * 1000) + " 1000";
-  }, { passive: true });
-
-  // Visible project cards slide in again when a filter is chosen
-  document.querySelectorAll(".filter").forEach(button => {
-    button.addEventListener("click", () => {
-      let i = 0;
-      document.querySelectorAll(".project-card:not([hidden])").forEach(card => {
-        card.classList.remove("pop");
-        void card.offsetWidth;
-        card.style.setProperty("--d", (i++ * 0.07) + "s");
-        card.classList.add("pop");
-      });
-    });
-  });
-})();
-</script>
-
-<script>
-(function () {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const cv = document.getElementById("dust");
-  const ctx = cv.getContext("2d");
-  let W = 0, H = 0, motes = [];
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    W = innerWidth; H = innerHeight;
-    cv.width = W * dpr; cv.height = H * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    motes = Array.from({ length: Math.round(W * H / 26000) }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: 0.5 + Math.random() * 1.3,
-      vx: (Math.random() - 0.5) * 0.12,
-      vy: -(0.05 + Math.random() * 0.12),
-      tw: Math.random() * 6.28,
-      warm: Math.random() < 0.3
-    }));
-  }
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    for (const m of motes) {
-      m.x += m.vx; m.y += m.vy; m.tw += 0.01;
-      if (m.y < -4) { m.y = H + 4; m.x = Math.random() * W; }
-      if (m.x < -4) m.x = W + 4;
-      if (m.x > W + 4) m.x = -4;
-      const a = 0.15 + 0.25 * (0.5 + 0.5 * Math.sin(m.tw));
-      ctx.fillStyle = m.warm ? "rgba(225,6,0," + a + ")" : "rgba(244,241,234," + a + ")";
-      ctx.beginPath();
-      ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    requestAnimationFrame(draw);
-  }
-  resize();
-  addEventListener("resize", resize);
-  draw();
-})();
-</script>
 </body>
 </html>
