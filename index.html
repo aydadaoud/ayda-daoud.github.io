@@ -133,6 +133,11 @@ section{padding:110px 6%;position:relative}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .chips span{border:1px solid #333;padding:7px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#dcd9d0}
 
+
+.about-layout{margin-bottom:20px}
+.about-signoff{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:17px 12px;margin-top:28px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--dim)}
+.about-signoff b{color:var(--red);font-size:14px}
+
 /* motorsports */
 .why{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .why-list{list-style:none;padding:0;margin:0;counter-reset:w}
@@ -269,6 +274,62 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
   .draw path,.draw circle,.draw line{stroke-dashoffset:0!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ===== BUILT TO MOVE / MOTION HERO BACKGROUND ===== */
+#home.hero{isolation:isolate;background:radial-gradient(ellipse at 72% 28%,rgba(116,32,35,.38),transparent 42%),radial-gradient(ellipse at 18% 78%,rgba(48,76,96,.20),transparent 38%),#0a0a0a}
+#home.hero:before{z-index:-2}
+#home.hero:after{z-index:1;pointer-events:none;opacity:.5}
+#home .motion-hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+#home .motion-glow{position:absolute;display:block;border-radius:50%;filter:blur(85px)}
+#home .glow-red{width:620px;height:620px;right:-160px;top:-190px;background:rgba(217,46,42,.32);opacity:.55}
+#home .glow-blue{width:540px;height:540px;left:-200px;bottom:-230px;background:rgba(74,105,130,.28);opacity:.5}
+#home .glow-exit{width:650px;height:260px;right:-10%;top:36%;background:radial-gradient(ellipse,rgba(217,46,42,.25),transparent 70%);filter:blur(35px);animation:exitGlow 9s ease-in-out infinite}
+#home .motion-trails{position:absolute;inset:0;width:100%;height:100%;filter:blur(2.8px);opacity:.65}
+#home .motion-trail{fill:none;stroke-linecap:round;stroke-width:13;stroke:rgba(217,46,42,.43);stroke-dasharray:260 1400;animation:trackFlow 8s linear infinite}
+#home .trail-b{stroke-width:7;stroke:rgba(236,236,236,.22);animation-duration:10s;animation-delay:-3s}
+#home .trail-c{stroke-width:19;stroke:rgba(217,46,42,.17);animation-duration:12s;animation-delay:-5s}
+#home .trail-d{stroke-width:5;stroke:rgba(96,123,145,.42);animation-duration:9s;animation-delay:-2s}
+#home .motion-kerb{position:absolute;left:0;right:0;bottom:0;height:52px;background:repeating-linear-gradient(90deg,#d92e2a 0 30px,#ececec 30px 60px);opacity:.09;filter:blur(1px);transform:skewY(-2deg);transform-origin:left bottom}
+#home .motion-streak{position:absolute;left:0;width:300px;height:2px;background:linear-gradient(90deg,transparent,rgba(236,236,236,.65),transparent);filter:blur(1px);opacity:0;animation:lightStreak 4.2s linear infinite}
+#home .streak-one{top:30%;animation-delay:0s}
+#home .streak-two{top:47%;width:390px;animation-delay:1.35s}
+#home .streak-three{top:66%;background:linear-gradient(90deg,transparent,rgba(217,46,42,.8),transparent);animation-delay:2.6s}
+#home .motion-marquee{position:absolute;left:0;white-space:nowrap;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;pointer-events:none}
+#home .motion-marquee span{display:inline-block}
+#home .marquee-top{top:12%;font-size:clamp(14px,1.8vw,24px);color:rgba(236,236,236,.13);filter:blur(1.8px);animation:marqueeDrift 52s linear infinite}
+#home .marquee-bottom{bottom:13%;font-size:clamp(10px,1.15vw,15px);color:rgba(217,46,42,.28);filter:blur(1.2px);animation:marqueeDrift 64s linear infinite reverse}
+#home .motion-sparks{position:absolute;inset:0}
+#home .motion-sparks i{position:absolute;width:4px;height:4px;border-radius:50%;background:#f4e8dc;box-shadow:0 0 12px 3px rgba(255,190,150,.55);opacity:0;animation:sparkLift 6s ease-out infinite}
+#home .motion-sparks i:nth-child(1){left:38%;bottom:27%;animation-delay:0s}
+#home .motion-sparks i:nth-child(2){left:54%;bottom:34%;animation-delay:1.5s}
+#home .motion-sparks i:nth-child(3){left:70%;bottom:22%;animation-delay:3s}
+#home .motion-sparks i:nth-child(4){left:45%;bottom:42%;animation-delay:4.2s}
+#home .motion-sparks i:nth-child(5){left:78%;bottom:30%;animation-delay:2.2s}
+#home .moving-car{position:absolute;left:0;top:56%;width:clamp(300px,43vw,650px);z-index:1;opacity:0;filter:drop-shadow(0 0 15px rgba(217,46,42,.20));animation:carPass 12s cubic-bezier(.55,0,.4,1) infinite}
+#home .moving-car svg{display:block;width:100%;height:auto}
+#home .hero-copy,#home .sheet{z-index:2}
+@keyframes trackFlow{from{stroke-dashoffset:1660}to{stroke-dashoffset:0}}
+@keyframes lightStreak{0%{transform:translateX(-35vw);opacity:0}12%{opacity:.8}60%{opacity:0}100%{transform:translateX(125vw);opacity:0}}
+@keyframes marqueeDrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes sparkLift{0%{opacity:0;transform:translate(0,0) scale(.6)}15%{opacity:.8}100%{opacity:0;transform:translate(-28px,-100px) scale(.2)}}
+@keyframes carPass{0%,5%{transform:translateX(-55vw) rotate(-2deg);opacity:0}14%{opacity:.48}68%{transform:translateX(110vw) rotate(-2deg);opacity:.48}78%,100%{transform:translateX(110vw) rotate(-2deg);opacity:0}}
+@keyframes exitGlow{0%,60%{opacity:0;transform:translateX(-20vw) scale(.7)}72%{opacity:.65;transform:translateX(0) scale(1)}88%,100%{opacity:0;transform:translateX(20vw) scale(1.2)}}
+@media(max-width:960px){
+ #home .moving-car{top:66%;width:65vw;opacity:.32}
+ #home .marquee-top{top:8%}
+ #home .marquee-bottom{bottom:8%}
+}
+@media(max-width:600px){
+ #home .moving-car{top:70%;width:82vw}
+ #home .motion-trails{opacity:.4}
+ #home .motion-kerb{height:34px}
+ #home .hero-copy,#home .sheet{position:relative}
+}
+@media(prefers-reduced-motion:reduce){
+ #home .motion-trail,#home .motion-streak,#home .motion-marquee,#home .motion-sparks i,#home .moving-car,#home .glow-exit{animation:none!important}
+ #home .moving-car{opacity:.12;transform:translateX(18vw)}
+}
+
 </style>
 </head>
 <body>
@@ -280,6 +341,7 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
     <div class="navlinks" id="navlinks">
       <a href="#garage">Garage</a>
       <a href="#driver">Driver</a>
+      <a href="#about">About me</a>
       <a href="#motorsports">Motorsports</a>
       <a href="#team">Team</a>
       <a href="#toolkit">Toolkit</a>
@@ -291,6 +353,43 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
 <main>
 
 <section class="hero" id="home">
+  <div class="motion-hero-bg" aria-hidden="true">
+    <span class="motion-glow glow-red"></span>
+    <span class="motion-glow glow-blue"></span>
+    <span class="motion-glow glow-exit"></span>
+    <svg class="motion-trails" viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path class="motion-trail trail-a" d="M-40 690 C 260 610, 420 560, 640 540 S 1040 560, 1180 430 S 1420 250, 1660 220"/>
+      <path class="motion-trail trail-b" d="M-40 730 C 300 660, 470 620, 690 610 S 1080 640, 1220 500 S 1440 320, 1660 290"/>
+      <path class="motion-trail trail-c" d="M-40 650 C 230 585, 400 520, 610 500 S 1000 500, 1140 380 S 1380 200, 1660 170"/>
+      <path class="motion-trail trail-d" d="M-40 780 C 330 710, 520 690, 760 690 S 1120 720, 1260 580 S 1460 400, 1660 360"/>
+    </svg>
+    <span class="motion-kerb"></span>
+    <span class="motion-streak streak-one"></span>
+    <span class="motion-streak streak-two"></span>
+    <span class="motion-streak streak-three"></span>
+    <span class="motion-sparks"><i></i><i></i><i></i><i></i><i></i></span>
+    <div class="motion-marquee marquee-top"><span>DESIGN IT · BUILD IT · BREAK IT · MAKE IT BETTER · THEORY MEETS SOMETHING YOU CAN TOUCH · </span><span>DESIGN IT · BUILD IT · BREAK IT · MAKE IT BETTER · THEORY MEETS SOMETHING YOU CAN TOUCH · </span></div>
+    <div class="motion-marquee marquee-bottom"><span>KINEMATICS · TOLERANCE · TORQUE · PACKAGING · ITERATION · DRIVETRAIN · STEERING · PROTOTYPE · </span><span>KINEMATICS · TOLERANCE · TORQUE · PACKAGING · ITERATION · DRIVETRAIN · STEERING · PROTOTYPE · </span></div>
+    <div class="moving-car">
+      <svg viewBox="0 0 900 300" role="presentation">
+        <g fill="#08090b" stroke="rgba(217,46,42,.78)" stroke-width="2.2">
+          <path d="M36 150 H160 V164 H36 Z"/>
+          <path d="M40 146 H48 V184 H40 Z"/>
+          <path d="M120 164 L150 204 L162 202 L134 164 Z"/>
+          <path d="M90 236 L150 214 L240 186 L330 168 L402 150 L440 142 L520 152 L610 176 L700 196 L790 214 L856 228 L872 238 L850 246 L700 248 L520 248 L330 248 L190 252 L110 250 Z"/>
+          <path d="M466 152 Q498 122 530 152" fill="none" stroke="#d92e2a" stroke-linecap="round" stroke-width="7"/>
+          <path d="M800 252 L896 240 L898 250 L806 262 Z"/>
+          <circle cx="250" cy="232" r="46"/>
+          <circle cx="690" cy="228" r="44"/>
+        </g>
+        <g fill="none" stroke="rgba(236,236,236,.35)" stroke-width="2">
+          <circle cx="250" cy="232" r="19"/><circle cx="690" cy="228" r="18"/>
+          <path d="M180 215 L330 185 L440 160 L520 166 L640 194"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <div class="hero-copy reveal in">
     <div class="kicker"><b>Mechanical engineering</b><span>American University of Beirut</span><span>Motorsport enthusiast</span></div>
     <h1>BUILT<span class="out">TO MOVE</span><span class="red">.</span></h1>
@@ -397,10 +496,46 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
   </div>
 </section>
 
-<!-- 03 MOTORSPORTS -->
-<section id="motorsports" class="glow-s g-bl" aria-labelledby="motor-title">
+
+<!-- 03 ABOUT ME -->
+<section id="about" class="glow-s g-tr" aria-labelledby="about-title">
   <div class="head reveal">
     <div class="num">03</div>
+    <div>
+      <span class="eyebrow">The person behind the build</span>
+      <h2 class="title" id="about-title">More than <span class="out">mechanical</span></h2>
+    </div>
+    <p class="sub">Engineer by direction. Artist by instinct. Athlete by habit.</p>
+  </div>
+  <div class="driver about-layout">
+    <div class="reveal">
+      <p class="lead">I’m Ayda — a mechanical engineering student, a hands-on problem solver, and a creative person who rarely wants to do just one thing.</p>
+      <p>My mind naturally moves between two worlds: the technical and the creative. I love understanding how mechanisms work, designing solutions and getting my hands into the build. But I also care about the way an idea looks, feels and tells a story. I don’t see those sides as opposites. I want them both in the work I make.</p>
+      <p>Outside the workshop, you’ll usually find me running, on the track, playing rugby, or finding another challenge to take on. I’m also drawn to writing, reading, drawing and the visual side of creating things. Sport keeps me disciplined; art keeps me curious; engineering gives me a way to bring ideas into the real world.</p>
+      <p>I’m involved in student engineering communities because I like building more than components. I like building teams, opportunities and spaces where people can try things, learn by doing and make something happen.</p>
+      <span class="note">A little bit of everything. Always building.</span>
+    </div>
+    <aside class="facts reveal">
+      <h4>Outside the blueprint</h4>
+      <dl>
+        <dt>Currently</dt><dd>Mechanical Engineering at AUB</dd>
+        <dt>In the garage</dt><dd>Motorsports, vehicle development, mechanisms and prototyping</dd>
+        <dt>On the move</dt><dd>Track &amp; field, rugby, boxing and distance running</dd>
+        <dt>Creative fuel</dt><dd>Writing, reading, drawing, music and visual design</dd>
+        <dt>With a team</dt><dd>Engineering societies, workshops and student-led projects</dd>
+      </dl>
+      <div class="chips">
+        <span>Curious</span><span>Hands-on</span><span>Creative</span><span>Team-driven</span><span>Always iterating</span>
+      </div>
+    </aside>
+  </div>
+  <div class="about-signoff reveal"><span>DESIGN THINKING</span><b>×</b><span>MECHANICAL INSTINCT</span><b>×</b><span>CREATIVE ENERGY</span></div>
+</section>
+
+<!-- 04 MOTORSPORTS -->
+<section id="motorsports" class="glow-s g-bl" aria-labelledby="motor-title">
+  <div class="head reveal">
+    <div class="num">04</div>
     <div>
       <span class="eyebrow">Why motorsports?</span>
       <h2 class="title" id="motor-title">The <span class="out">paddock</span></h2>
@@ -434,7 +569,7 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
 <!-- 04 TEAM -->
 <section id="team" class="glow-s g-br" aria-labelledby="team-title">
   <div class="head reveal">
-    <div class="num">04</div>
+    <div class="num">05</div>
     <div>
       <span class="eyebrow">Experience</span>
       <h2 class="title" id="team-title">More than <span class="out">the CAD</span></h2>
@@ -479,7 +614,7 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
 <!-- 05 TOOLKIT -->
 <section id="toolkit" class="glow-s g-tl" aria-labelledby="toolkit-title">
   <div class="head reveal">
-    <div class="num">05</div>
+    <div class="num">06</div>
     <div>
       <span class="eyebrow">Tools of the trade</span>
       <h2 class="title" id="toolkit-title">Five <span class="out">disciplines</span></h2>
@@ -518,7 +653,7 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
 <!-- 06 OUTSIDE -->
 <section id="outside" class="glow-s g-bl" aria-labelledby="outside-title">
   <div class="head reveal">
-    <div class="num">06</div>
+    <div class="num">07</div>
     <div>
       <span class="eyebrow">Beyond the shop</span>
       <h2 class="title" id="outside-title">Outside <span class="out">engineering</span></h2>
@@ -536,7 +671,7 @@ footer{padding:26px 6%;display:flex;justify-content:space-between;flex-wrap:wrap
 <!-- 07 CONTACT -->
 <section class="contact" id="contact" aria-labelledby="contact-title">
   <div class="head reveal">
-    <div class="num">07</div>
+    <div class="num">08</div>
     <div>
       <span class="eyebrow">Contact</span>
       <h2 id="contact-title" style="margin:0">Let's make it <span class="red">move.</span></h2>
